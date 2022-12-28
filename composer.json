@@ -13,7 +13,7 @@
             "App\\": "app/"
         },
         "files": [
-            
+            "app/helpers/constants.php"
         ]
     }
 }
