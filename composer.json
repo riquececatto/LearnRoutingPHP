@@ -1,0 +1,19 @@
+{
+    "name": "riquececatto/learn-routing-php",
+    "description": "",
+    "license": "",
+    "authors": [
+        {
+            "name": "Henrique Cecatto",
+            "email": "rique.cecatto00@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            
+        ]
+    }
+}
