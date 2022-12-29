@@ -17,12 +17,13 @@ class Router
         $params = [];
         if (empty($matchedUri)) {
             $matchedUri = self::regularExpressionMatchUri($uri, $routes[$requestMethod]);
-            var_dump($matchedUri);
-            die();
+            
+            $uri = explode('/', ltrim($uri, '/'));
+            $params = self::getParams($uri, $matchedUri);
         }
 
         if (!empty($matchedUri)) {
-            // return Controller::getController($matchedUri, $params);
+            return Controller::getController($matchedUri, $params);
         }
     }
 
@@ -39,14 +40,15 @@ class Router
         return array_filter(
             $routes,
             function ($value) use ($uri) {
-                //uri   =  /user/100/
-                
-                //regex -> / ^\/user\/[0-9]+\/?$ /
-                // $regex = str_replace('/', '\/', $value);
-
-                return preg_match("/^{$value}$/", $uri);
+                return preg_match("~^{$value}$~", $uri);
             },
             ARRAY_FILTER_USE_KEY
         );
+    }
+
+    private static function getParams(array $uri, array $matchedUri)
+    {
+        $matchedParams = array_keys($matchedUri)[0];
+        return array_diff($uri, explode('\/', $matchedParams));
     }
 }

@@ -6,3 +6,5 @@ return [
         '\/user\/[0-9]+\/?' => 'UserController@show'
     ]
 ];
+
+    
