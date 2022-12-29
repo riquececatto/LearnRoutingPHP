@@ -2,9 +2,12 @@
 
 namespace App\Router;
 
-class Router 
+use App\Controllers\Controller;
+
+class Router
 {
-    public static function getRouter() {
+    public static function getRouter()
+    {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $routes = require_once 'routes.php';
@@ -12,40 +15,38 @@ class Router
         $matchedUri = self::exactMatchUri($uri, $routes[$requestMethod]);
 
         $params = [];
-        if(empty($matchedUri)) {
+        if (empty($matchedUri)) {
             $matchedUri = self::regularExpressionMatchUri($uri, $routes[$requestMethod]);
+            var_dump($matchedUri);
+            die();
         }
 
-        if(!empty($matchedUri)) {
-            return [];
+        if (!empty($matchedUri)) {
+            // return Controller::getController($matchedUri, $params);
         }
-        
-
     }
 
     // Exact URI
-    private static function exactMatchUri(string $uri, array $routes) {
-        (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] : [] ;
+    private static function exactMatchUri(string $uri, array $routes)
+    {
+        (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] : [];
     }
 
     //Regular Expression URI
-    private static function regularExpressionMatchUri(string $uri, array $routes) {
-        
-    //     //uri = /user/100/ => \/user\/100\/
-    //     $uri = str_replace('/', '\/', $uri);
-    //     die();
-        
-    //     //rgx = / ^\/user\/[0-9]+\/?$ /
-    //     return array_filter($routes, function($value) use ($uri) {
-    //         $uri = 
-    //         $regex = "";
-    //         var_dump($regex);
-    //         die();
+    private static function regularExpressionMatchUri(string $uri, array $routes)
+    {
+        //rgx = / ^\/user\/[0-9]+\/?$ /
+        return array_filter(
+            $routes,
+            function ($value) use ($uri) {
+                //uri   =  /user/100/
+                
+                //regex -> / ^\/user\/[0-9]+\/?$ /
+                // $regex = str_replace('/', '\/', $value);
 
-    //         // var_dump($uri, $regex, preg_match($regex, $uri), '<hr>');
-
-    //         // return preg_match(pattern, $uri);
-    //     });
+                return preg_match("/^{$value}$/", $uri);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
     }
-
 }

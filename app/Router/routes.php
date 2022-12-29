@@ -3,6 +3,6 @@
 return [
     'GET' => [
         '/' => 'HomeController@index',
-        '^\/user\/[0-9]+\/?$' => 'UserController@show'
+        '\/user\/[0-9]+\/?' => 'UserController@show'
     ]
 ];
