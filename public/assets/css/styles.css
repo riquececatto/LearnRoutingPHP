@@ -1,0 +1,172 @@
+:root {
+    --bg-color-header: #000;
+    --bg-color-main: purple;
+    --bg-color-footer: #000;
+
+    --bg-color-form: #fff;
+    --bg-color-form-header: #f7f7f7;
+    --bg-color-form-border-text: #f0f0f0;
+    --bg-color-btn-form: lightgreen;
+
+    --bg-color-log: lightgreen;
+}
+
+/* ==== ==== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-size: 10px;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* ==== ==== */
+
+.header {
+    width: 100vw;
+    height: 5rem;
+
+    background-color: var(--bg-color-header);
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--bg-color-main);
+}
+
+.footer {
+    width: 100vw;
+    height: 5rem;
+
+    background-color: var(--bg-color-footer);
+}
+
+.container {
+    width: 90%;
+    height: 100%;
+
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.around {
+    align-items: space-around;
+}
+
+/* ==== ==== */
+
+.narbar__text {
+    text-decoration: none;
+}
+
+.form {
+    height: 50%;
+}
+
+.sign-in,
+.sign-up {
+    width: 100%;
+    height: 100%;
+}
+
+.log {
+    width: 99%;
+    height: 30rem;
+    margin: 1.5rem;
+
+    border-radius: 5px;
+    background-color: var(--bg-color-log);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
+
+.log .container {
+    justify-content: flex-end;
+}
+
+.sign-in,
+.sign-up {
+    width: 30rem;
+    height: 40rem;
+    margin: 0 2rem;
+
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .4);
+    overflow: hidden;
+}
+
+.form__header {
+    width: 100%;
+    min-height: 7rem;
+    background-color: var(--bg-color-form-header);
+    border-bottom: 1px solid var(--bg-color-form-border-text);
+}
+
+.form__title {
+    font-size: 3rem;
+}
+
+.form__menu {
+    width: 100%;
+    height: 100%;
+}
+
+.form__list {
+    width: 90%;
+    height: 90%;
+}
+
+.form__group {
+    width: 100%;
+    height: 100%;
+}
+
+.form__item {
+    width: 100%;
+    margin: .5rem 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.form__item input {
+    width: 100%;
+
+    padding: 1rem;
+    display: block;
+    border-radius: .4rem;
+    border: 2px solid var(--bg-color-form-border-text);
+    font-size: 1.5rem;
+}
+
+.form__btn-sign-in,
+.form__btn-sign-up {
+    cursor: pointer;
+    background-color: var(--bg-color-btn-form);
+    border: 1px solid;
+    width: 100%;
+    height: 5rem;
+    font-size: 2.3rem;
+
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+    overflow: hidden;
+}
