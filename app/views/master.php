@@ -14,7 +14,9 @@
         <?php require_once VIEW . 'partials/header/header.php'; ?>
     </header>
     <main class="main">
-        <!-- <?php require_once VIEW . $view;?> -->
+        <?php require_once VIEW . $view;?>
+        <?php require_once VIEW . 'partials/logHistory/logHistory.php';?>
     </main>
+
 </body>
 </html>
