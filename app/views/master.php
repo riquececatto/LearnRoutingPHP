@@ -10,7 +10,11 @@
     <title> <?php echo $title ?> </title>
 </head>
 <body>
-    <?php require_once VIEW . 'partials/header/header.php'; ?>
-    <?php require_once VIEW . $view;?>
+    <header class="header">
+        <?php require_once VIEW . 'partials/header/header.php'; ?>
+    </header>
+    <main class="main">
+        <!-- <?php require_once VIEW . $view;?> -->
+    </main>
 </body>
 </html>

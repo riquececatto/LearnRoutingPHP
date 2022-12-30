@@ -1,5 +1,5 @@
 :root {
-    --bg-color-header: #000;
+    --bg-color-header: #171717;
     --bg-color-main: purple;
     --bg-color-footer: #000;
 
@@ -37,7 +37,7 @@ body {
 
 .main {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
 
     background-color: var(--bg-color-main);
 }
@@ -71,9 +71,42 @@ body {
 }
 
 /* ==== ==== */
+.navbar {
+    width: 100%;
+}
 
-.narbar__text {
+.navbar__burguer {
+    width: 3rem;
+    height: 3rem;
+}
+
+.navbar__burguer-menu {
+    width: 95%;
+    height: 95%;
+}
+
+.navbar__burguer-span {
+    content: "";
+    width: 90%;
+    height: .3rem;
+    background-color: #fff;
+    margin: auto 0;
+}
+
+.navbar__menu {
+    width: 100%;
+}
+
+.navbar__item {
+    margin: 0 auto;
+    list-style-type: none;
+}
+
+.navbar__link {
     text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem;
 }
 
 .form {
