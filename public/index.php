@@ -13,16 +13,6 @@ try {
 
     $view = $routeData['view'];
 
-
-
-    $test = new UserController(new User('1', 'Henrique', '@gmail', '123'));
-
-
-
-    echo '<pre>';
-    var_dump($test->getByIdUser());
-    die();
-
     require_once VIEW . 'master.php';
 
 } catch(\Exception $e) {

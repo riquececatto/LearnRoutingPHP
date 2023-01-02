@@ -4,29 +4,31 @@ namespace App\DB;
 
 class DAO
 {
-    private static array $dbo;
+    private array $dbo;
 
     public function __construct()
     {
-        self::$dbo = [
-            'dbName' => '',
+        $this->dbo = [
+            'dbName' => 'example',
             'dbHost' => 'localhost:3306',
-            'dbUser' => 'root',
+            'dbUser' => 'riquececatto',
             'dbPassword' => '159753'
         ];
     }
 
-    protected static function openDB() {
-        return new \PDO("mysql:dbname=".
-            self::$dbo['dbName'].";host=".
-            self::$dbo['dbHost'], 
-            self::$dbo['dbUser'], 
-            self::$dbo['dbPassword'], 
-            [\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ]
-        );
+    public function openDB() {
+        try {
+            if(!is_null($this->dbo)) {
+                return new \PDO("mysql:dbname=".$this->dbo['dbName'].";host=".$this->dbo['dbHost'], $this->dbo['dbUser'], $this->dbo['dbPassword'], 
+                    [\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ]
+                );
+            }
+        } catch(\PDOException $pdo) {
+            var_dump($pdo->getMessage());
+        }
     }
 
-    protected static function closeDB(){
-        unset($dbo);
+    public function closeDB(){
+        unset($this->dbo);
     }
 }
