@@ -25,6 +25,8 @@ class Router
         if (!empty($matchedUri)) {
             return Controller::getController($matchedUri, $params);
         }
+
+        throw new \Exception('Algo deu errado na rota.');
     }
 
     // Exact URI
