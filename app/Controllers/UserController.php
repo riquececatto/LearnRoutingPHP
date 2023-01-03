@@ -9,14 +9,12 @@ class UserController extends DAO
 {
     private array $user;
 
-    public function index()
-    {
-
+    public function index() {
         $users = \App\DB\UserDAO::getAllUser();
 
         return [
-            'view' => '',
-            'data' => $users
+            'view' => 'pages/listUser/listUser.php',
+            'data' => ['title' => 'Users', 'users' => $users]
         ];
     }
 
