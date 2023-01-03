@@ -37,16 +37,34 @@ class UserDAO extends DAO
         }
     }
 
+    public static function createUser(User $user) : void {
+        try {
+            $db = new DAO();
+            $stmt = $db->openDB();
+
+            $stmt = $stmt->prepare('INSERT INTO USER VALUE(:idUser, :nameUser, :emailUser, :passwordUser);');
+
+            $stmt->bindValue(':idUser', $user->getIdUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':nameUser', $user->getNameUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':emailUser', $user->getEmailUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':passwordUser', $user->getPasswordUser(), \PDO::PARAM_STR);
+            $stmt->execute();
+            $db->closeDB();
+        } catch(\PDOException $pdo) {
+            var_dump('Erro no createUser', $pdo->getMessage());
+        }
+    }
+
     public static function updateUser(User $user) : void {
         try {
             $db = new DAO();
             $stmt = $db->openDB();
 
-            $stmt = $stmt->prepare('UPDATE USER SET nameUser =:nameUser, emailUser =:email, passwordUser =:pass WHERE idUser =:id; ');
+            $stmt = $stmt->prepare('UPDATE USER SET nameUser =:nameUser, emailUser =:emailUser, passwordUser =:passwordUser WHERE idUser =:idUser; ');
             $stmt->bindValue(':nameUser', $user->getNameUser(), \PDO::PARAM_STR);
-            $stmt->bindValue(':email', $user->getEmailUser(), \PDO::PARAM_STR);
-            $stmt->bindValue(':pass', $user->getPasswordUser(), \PDO::PARAM_STR);
-            $stmt->bindValue(':id', $user->getIdUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':emailUser', $user->getEmailUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':passwordUser', $user->getPasswordUser(), \PDO::PARAM_STR);
+            $stmt->bindValue(':idUser', $user->getIdUser(), \PDO::PARAM_STR);
             $stmt->execute();
             $db->closeDB();
         } catch(\PDOException $pdo) {
