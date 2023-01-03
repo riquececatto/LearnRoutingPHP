@@ -34,12 +34,10 @@ class UserController extends DAO
         return  redirect('/');
     }
 
-    public function show()
-    {
+    public function delete($params) {
+        $id = (string) array_values($params)[0];
 
-        return [
-            'view' => '',
-            'data' => []
-        ];
+        \App\DB\UserDAO::deleteUser($id);
+        return  redirect('/user/');
     }
 }

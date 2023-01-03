@@ -19,7 +19,7 @@
                             <td class="c-log__item"><?php echo $user['passwordUser']; ?></td>
                             <td class="c-log__item">
                                 <a href="#" class="c-log__btn edit">Edit</a>
-                                <a href="#" class="c-log__btn delete">Delete</a>
+                                <a href="/user/delete/<?php echo $user['idUser']; ?>" class="c-log__btn delete">Delete</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
