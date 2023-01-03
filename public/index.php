@@ -1,7 +1,5 @@
 <?php
 
-use App\Controllers\UserController;
-use App\Models\User;
 use App\Router\Router;
 
 try {
@@ -18,7 +16,3 @@ try {
 } catch(\Exception $e) {
     var_dump($e->getMessage());
 }
-
-
-// '1', 'Henrique', '@gmail', '123'
-// ['2', 'Rique', '@gmail', '123',]
