@@ -245,14 +245,14 @@ body {
 .c-log__item {
     border: 1px solid #000;
     padding: .5rem;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     text-align: center;
 }
 
 .c-log__btn {
     display: inline-block;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-family: Tahoma, Verdana;
     text-decoration: none;
 

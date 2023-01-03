@@ -7,7 +7,6 @@ use App\Models\User;
 
 class UserController extends DAO
 {
-    private array $user;
 
     public function index() {
         $users = \App\DB\UserDAO::getAllUser();
@@ -16,6 +15,23 @@ class UserController extends DAO
             'view' => 'pages/listUser/listUser.php',
             'data' => ['title' => 'Users', 'users' => $users]
         ];
+    }
+
+    public function create() {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $repeatPassword = $_POST['repeat-password'];
+
+        if(!empty($password)) {
+            if($password == $repeatPassword) {
+                $user = new User(cuid(), $name, $email, password_hash($password, PASSWORD_DEFAULT));
+                \App\DB\UserDAO::createUser($user);
+                return  redirect('/user/');
+            }
+            return  redirect('/');
+        }
+        return  redirect('/');
     }
 
     public function show()

@@ -28,11 +28,11 @@
             <div class="form__header flex">
                 <h2 class="form__title">Sign up</h2>
             </div>
-            <form class="form__menu flex" action="" method="POST">
+            <form class="form__menu flex" action="/user/create/" method="POST">
                 <div class="form__list flex column">
                     <div class="form__group flex column">
                         <div class="form__item">
-                            <input class="form__input-text" type="email" name="name" placeholder="Name: ">
+                            <input class="form__input-text" type="text" name="name" placeholder="Name: ">
                         </div>
                         <div class="form__item">
                             <input class="form__input-text" type="email" name="email" placeholder="Email: ">

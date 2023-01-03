@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'POST' => [
+        '/user/create/' => 'UserController@create',
+    ],
     'GET' => [
         '/' => 'HomeController@index',
         '/user/' => 'UserController@index',
