@@ -8,13 +8,17 @@
             "email": "rique.cecatto00@gmail.com"
         }
     ],
+    "require": {
+        "endyjasmi/cuid": "2.*"
+    },
     "autoload": {
         "psr-4": {
             "App\\": "app/"
         },
         "files": [
             "app/helpers/constants.php",
-            "app/helpers/redirect.php"
+            "app/helpers/redirect.php",
+            "app/helpers/cuid.php"
         ]
     }
 }
