@@ -9,30 +9,23 @@ class UserController extends DAO
 {
     private array $user;
 
-    public function __construct(User $user)
+    public function index()
     {
-        $this->user = $user;
+
+        $users = \App\DB\UserDAO::getAllUser();
+
+        return [
+            'view' => '',
+            'data' => $users
+        ];
     }
 
     public function show()
     {
+
         return [
             'view' => '',
             'data' => []
         ];
-    }
-
-    public function getByIdUser(string $id = '*')
-    {
-        // $db = new DAO;
-        // $db->openDB();
-        // $db->closeDB();
-
-        return $this->user;
-    }
-
-    public function getByEmailUser(string $email)
-    {
-        return [];
     }
 }

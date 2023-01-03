@@ -11,7 +11,7 @@ class User
         'passwordUser' => ''
     ];  
 
-    public function __construct($id, $name, $email, $password)
+    public function __construct(string $id, string $name, string $email, string $password)
     {
         $this->user['idUser'] = $id;
         $this->user['nameUser'] = $name;
@@ -23,6 +23,38 @@ class User
     {
         return $this->user;
     }
+
+    public function getIdUser() {
+        return $this->user['idUser'];
+    }
+
+    public function getNameUser() {
+        return $this->user['nameUser'];
+    }
+
+    public function getEmailUser() {
+        return $this->user['emailUser'];
+    }
+
+    public function getPasswordUser() {
+        return $this->user['passwordUser'];
+    }
+
+    public function setIdUser(string $id) : void{
+        $this->user['idUser']= $id ;
+    }
+
+    public function setNameUser(string $name) : void{
+        $this->user['nameUser']= $name ;
+    }
+
+    public function setEmailUser(string $email) : void{
+        $this->user['emailUser']= $email ;
+    }
+
+    public function setPasswordUser(string $password) : void {
+        $this->user['passwordUser']= $password ;
+    }   
 
     public function __destruct()
     {
