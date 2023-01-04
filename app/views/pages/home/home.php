@@ -1,52 +1,40 @@
-<div class="container flex column">
-    <div class="form flex">
-        <div class="sign-in flex column">
-            <div class="form__header flex">
-                <h2 class="form__title">Sign in</h2>
+<div class="container">
+    <div class="c-form">
+        <div class="c-form__container">
+            <div class="c-form__header">
+                <h2 class="c-form__title"><?php echo $txtAction ?></h2>
             </div>
-            <form class="form__menu flex " action="" method="GET">
-                <div class="form__list flex column">
-                    <div class="form__group flex column">
-                        <div class="form__item">
-                            <input class="form__input-text" type="email" name="" placeholder="Email: " id="">
+            <form class="c-form__menu" action="/user/create/" method="POST">
+                <div class="c-form__list">
+                    <div class="c-form__group">
+                        <div class="c-form__item">
+                            <input class="c-form__input-text" type="text" name="name" placeholder="Name: " value="<?php if (!empty($user['nameUser'])) : echo $user['nameUser'];
+                                                                                                                    endif; ?>" />
                         </div>
-                        <div class="form__item">
-                            <input class="form__input-text" type="password" name="" placeholder="Password: " id="">
+                        <div class="c-form__item">
+                            <input class="c-form__input-text" type="email" name="email" placeholder="Email: " value="<?php if (!empty($user['nameUser'])) : echo $user['emailUser'];
+                                                                                                                        endif; ?>">
                         </div>
-                    </div>
-                    <div class="form__group">
-                        <div class="form__item">
-                            <a href="./user/NAME">
-                                <button class="form__btn-sign-in">Sign in</button>
-                            </a>
+                        <div class="c-form__item">
+                            <input class="c-form__input-text" type="password" name="password" placeholder="Password: ">
                         </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="sign-up flex column">
-            <div class="form__header flex">
-                <h2 class="form__title">Sign up</h2>
-            </div>
-            <form class="form__menu flex" action="/user/create/" method="POST">
-                <div class="form__list flex column">
-                    <div class="form__group flex column">
-                        <div class="form__item">
-                            <input class="form__input-text" type="text" name="name" placeholder="Name: ">
-                        </div>
-                        <div class="form__item">
-                            <input class="form__input-text" type="email" name="email" placeholder="Email: ">
-                        </div>
-                        <div class="form__item">
-                            <input class="form__input-text" type="password" name="password" placeholder="Password: ">
-                        </div>
-                        <div class="form__item">
-                            <input class="form__input-text" type="password" name="repeat-password" placeholder="Repaeat Password: ">
+                        <div class="c-form__item">
+                            <input class="c-form__input-text" type="password" name="repeat-password" placeholder="Repeat Password: ">
                         </div>
                     </div>
-                    <div class="form__group">
-                        <div class="form__item">
-                            <button class="form__btn-sign-up">Sign up</button>
+                    <div class="c-form__group">
+                        <div class="c-form__item">
+                            <?php
+                            if ($txtAction === 'Sign-up') :
+                                $txtLink = ['Do you have already account?', '', 'Sign-in'];
+                            else :
+                                $txtLink = ['Don\'t have a account?', 'sign-up', 'Sign-up'];
+                            endif;
+                            ?>
+                            <p class="c-form__text"><?php echo $txtLink[0]; ?><a href="/<?php echo $txtLink[1]; ?>" class="c-form__link"><?php echo $txtLink[2]; ?></a></p>
+                        </div>
+                        <div class="c-form__item">
+                            <button class="c-form__btn"><?php echo $txtAction ?></button>
                         </div>
                     </div>
                 </div>
@@ -54,3 +42,28 @@
         </div>
     </div>
 </div>
+
+<!-- <div class="sign-in flex column">
+    <div class="form__header flex">
+        <h2 class="form__title">Sign in</h2>
+    </div>
+    <form class="form__menu flex " action="" method="GET">
+        <div class="form__list flex column">
+            <div class="form__group flex column">
+                <div class="form__item">
+                    <input class="form__input-text" type="email" name="" placeholder="Email: " id="">
+                </div>
+                <div class="form__item">
+                    <input class="form__input-text" type="password" name="" placeholder="Password: " id="">
+                </div>
+            </div>
+            <div class="form__group">
+                <div class="form__item">
+                    <a href="./user/NAME">
+                        <button class="form__btn-sign-in">Sign in</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div> -->

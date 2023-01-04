@@ -19,6 +19,7 @@
     box-sizing: border-box;
 
     font-size: 10px;
+    font-family: Tahoma, Verdana;
 }
 
 body {
@@ -33,8 +34,6 @@ body {
 .header {
     width: 100vw;
     height: 5rem;
-
-    background-color: var(--bg-color-header);
 }
 
 .main {
@@ -54,40 +53,54 @@ body {
 .container {
     width: 90%;
     height: 100%;
-
     margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.flex {
+/* ==== ==== */
+.c-navbar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color-header);
+}
+
+.c-navbar__container {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.column {
-    flex-direction: column;
-}
-
-/* ==== ==== */
-.navbar {
-    width: 100%;
-}
-
-.navbar__burguer {
+.c-navbar__menu--burguer {
     width: 3rem;
     height: 3rem;
 
     cursor: pointer;
     border: 1px solid #fff;
     border-radius: 30%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar__burguer-menu {
+.c-navbar__group {
     width: 90%;
     height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.navbar__burguer-span {
+.c-navbar__burguer-span {
     content: "";
     width: 90%;
     height: .3rem;
@@ -95,36 +108,47 @@ body {
     margin: auto 0;
 }
 
-.navbar__menu {
-    width: 100%;
+.c-navbar__menu {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
 }
 
-.navbar__item {
+.c-navbar__item {
     margin: 0 auto;
     list-style-type: none;
 }
 
-.navbar__link {
+.c-navbar__link {
     text-decoration: none;
     color: white;
     font-size: 1.5rem;
     padding: 0.5rem;
 }
 
-.form {
+/* ==== ==== ==== ==== */
+
+.c-form {
     height: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.sign-in,
-.sign-up {
+.c-form__container {
     width: 100%;
     height: 100%;
-}
 
-.sign-in,
-.sign-up {
-    width: 30rem;
-    height: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 50rem;
+    height: 60rem;
     margin: 0 2rem;
 
     border-radius: 5px;
@@ -133,41 +157,62 @@ body {
     overflow: hidden;
 }
 
-.form__header {
+.c-form__header {
     width: 100%;
     min-height: 7rem;
     background-color: var(--bg-color-form-header);
     border-bottom: 1px solid var(--bg-color-form-border-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.form__title {
+.c-form__title {
     font-size: 3rem;
 }
 
-.form__menu {
+.c-form__menu {
     width: 100%;
     height: 100%;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.form__list {
+.c-form__list {
     width: 90%;
     height: 90%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.form__group {
+.c-form__group {
     width: 100%;
-    height: 100%;
+    margin-bottom: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.form__item {
+.c-form__item {
     width: 100%;
     margin: .5rem 0;
 
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.form__item input {
+.c-form__input-text {
     width: 100%;
 
     padding: 1rem;
@@ -177,8 +222,16 @@ body {
     font-size: 1.5rem;
 }
 
-.form__btn-sign-in,
-.form__btn-sign-up {
+.c-form__text {
+    font-size: 1.3rem;
+}
+
+.c-form__link {
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.c-form__btn {
     cursor: pointer;
     background-color: var(--bg-color-btn-form);
     border: 1px solid;
