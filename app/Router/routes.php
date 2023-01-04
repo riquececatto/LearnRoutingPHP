@@ -2,7 +2,8 @@
 
 return [
     'POST' => [
-        '/user/create/' => 'UserController@createUser',
+        '/user/login/' => 'UserController@loginUser',
+        '/user/create/' => 'UserController@createUser'
     ],
     'GET' => [
         '/' => 'HomeController@index',
