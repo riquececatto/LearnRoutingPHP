@@ -13,11 +13,14 @@ class UserController extends DAO
 
         return [
             'view' => 'pages/listUser/listUser.php',
-            'data' => ['title' => 'Users', 'users' => $users]
+            'data' => [
+                'title' => 'Users',
+                'users' => $users
+            ]
         ];
     }
 
-    public function create() {
+    public function createUser() {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
@@ -34,7 +37,21 @@ class UserController extends DAO
         return  redirect('/');
     }
 
-    public function delete($params) {
+    public function edit($params) {
+        $id = (string) array_values($params)[0];
+        $user = \App\DB\UserDAO::getIdUser($id);
+
+        return [
+            'view' => 'pages/home/home.php',
+            'data' => [
+                'title' => 'Users',
+                'txtAction' => 'Create', 
+                'user' => $user[0]
+            ]
+        ];
+    }
+
+    public function deleteUser($params) {
         $id = (string) array_values($params)[0];
 
         \App\DB\UserDAO::deleteUser($id);

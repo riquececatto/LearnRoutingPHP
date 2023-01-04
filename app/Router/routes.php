@@ -2,13 +2,15 @@
 
 return [
     'POST' => [
-        '/user/create/' => 'UserController@create',
+        '/user/create/' => 'UserController@createUser',
     ],
     'GET' => [
         '/' => 'HomeController@index',
+        '/sign-up' => 'HomeController@signUp',
         '/user/' => 'UserController@index',
-        '\/user\/[0-9]+\/?' => 'UserController@show',
-        '\/user\/delete\/[a-z0-9]+\/?' => 'UserController@delete'
+        '\/user\/[a-z0-9]+\/?' => 'UserController@edit',
+        '\/user\/delete\/[a-z0-9]+\/?' => 'UserController@deleteUser',
+        '\/user\/[0-9]+\/?' => 'UserController@show'
     ]
 ];
 
