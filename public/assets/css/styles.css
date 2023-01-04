@@ -223,6 +223,12 @@ body {
     font-size: 1.3rem;
 }
 
+.c-form__text--error {
+    color: #c82333;
+    font-size: 1rem;
+    margin-right: auto;
+}
+
 .c-form__link {
     font-size: 1.5rem;
     text-decoration: none;
