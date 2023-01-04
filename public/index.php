@@ -3,6 +3,7 @@
 use App\Router\Router;
 
 try {
+    session_start();
     require_once '../vendor/autoload.php';
 
     $routeData = Router::getRouter();
