@@ -18,6 +18,7 @@
         "files": [
             "app/helpers/constants.php",
             "app/helpers/redirect.php",
+            "app/helpers/flash.php",
             "app/helpers/cuid.php"
         ]
     }
