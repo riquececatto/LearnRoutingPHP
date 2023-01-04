@@ -11,5 +11,14 @@
             <li class="c-navbar__item"><a href="/" class="c-navbar__link">HOME</a></li>
             <li class="c-navbar__item"><a href="/user/" class="c-navbar__link">LIST USERS</a></li>
         </nav>
+        <div class="c-navbar__header" style="color:white">
+            <h3> Bem vindo, 
+                <?php if(logged()): ?>
+                    <?php echo user()['nameUser'];?> | <a href="/logout">Logout</a>
+                <?php else: ?>
+                    visitante
+                <?php endif; ?>
+            </h3>
+        </div>
     </div>
 </div>
