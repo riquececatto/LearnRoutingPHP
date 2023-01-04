@@ -131,7 +131,8 @@ body {
 /* ==== ==== ==== ==== */
 
 .c-form {
-    height: 50%;
+    width: 40rem;
+    height: 45rem;
 
     display: flex;
     align-items: center;
@@ -146,10 +147,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    width: 50rem;
-    height: 60rem;
-    margin: 0 2rem;
 
     border-radius: 5px;
     background-color: white;

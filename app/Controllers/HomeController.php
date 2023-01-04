@@ -10,7 +10,7 @@ class HomeController
             'view' => 'pages/home/home.php',
             'data' => [
                 'title' => 'Home',
-                'txtAction' => 'Sign-in'
+                'form' => 'partials/form/sign-in.php'
             ]
         ];
     }
@@ -21,7 +21,7 @@ class HomeController
             'view' => 'pages/home/home.php',
             'data' => [
                 'title' => 'Home',
-                'txtAction' => 'Sign-up'
+                'form' => 'partials/form/sign-up.php'
             ]
         ];
     }
