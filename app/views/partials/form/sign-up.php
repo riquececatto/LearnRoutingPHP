@@ -7,18 +7,20 @@
             <div class="c-form__list">
                 <div class="c-form__group">
                     <div class="c-form__item">
-                        <input class="c-form__input-text" type="text" name="name" placeholder="Name: " value="<?php if (!empty($user['nameUser'])) : echo $user['nameUser'];
-                                                                                                                endif; ?>" />
+                        <input class="c-form__input-text" type="text" name="name" placeholder="Name: ">
+                        <span class="c-form__text--error"><?php echo getFlash('name'); ?></span>
                     </div>
                     <div class="c-form__item">
-                        <input class="c-form__input-text" type="email" name="email" placeholder="Email: " value="<?php if (!empty($user['nameUser'])) : echo $user['emailUser'];
-                                                                                                                    endif; ?>">
+                        <input class="c-form__input-text" type="email" name="email" placeholder="Email: ">
+                        <span class="c-form__text--error"><?php echo getFlash('email'); ?></span>
                     </div>
                     <div class="c-form__item">
                         <input class="c-form__input-text" type="password" name="password" placeholder="Password: ">
+                        <span class="c-form__text--error"><?php echo getFlash('password'); ?></span>
                     </div>
                     <div class="c-form__item">
                         <input class="c-form__input-text" type="password" name="repeat-password" placeholder="Repeat Password: ">
+                        <span class="c-form__text--error"><?php echo getFlash('repeatPassword'); ?></span>
                     </div>
                 </div>
                 <div class="c-form__group">

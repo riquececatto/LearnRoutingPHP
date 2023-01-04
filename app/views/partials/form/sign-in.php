@@ -3,7 +3,7 @@
         <div class="c-form__header">
             <h2 class="c-form__title">Sign in</h2>
         </div>
-        <form class="c-form__menu " action="" method="GET">
+        <form class="c-form__menu " action="/user/login/" method="POST">
             <div class="c-form__list">
                 <div class="c-form__group">
                     <div class="c-form__item">
@@ -17,9 +17,9 @@
                     <div class="c-form__item">
                         <p class="c-form__text">Don't have a account?<a href="/sign-up" class="c-form__link">Sign-up</a></p>
                     </div>
-                    <a class="c-form__item c-form__link" href="./user/NAME">
-                            <button class="c-form__btn">Sign in</button>
-                    </a>
+                    <div class="c-form__item">
+                        <button type="submit" class="c-form__btn">Sign in</button>
+                    </div>
                 </div>
             </div>
         </form>

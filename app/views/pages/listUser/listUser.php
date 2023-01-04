@@ -1,7 +1,7 @@
 <div class="container">
     <div class="c-log">
         <div class="c-log__container">
-            <a href="/" class="c-log__btn create">+ Create new User</a>
+            <a href="/sign-up" class="c-log__btn create">+ Create new User</a>
             <table class="c-log__table">
                 <thead class="c-log__group-head">
                     <th class="c-log__title">Id</th>
