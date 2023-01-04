@@ -30,7 +30,7 @@ class UserController extends DAO
             return redirect('/');
         }
 
-        $user = \App\DB\UserDAO::getEmailUser($email)[0];
+        $user = \App\DB\UserDAO::getUserByEmail($email)[0];
         if (!password_verify($password, $user['passwordUser'])) {
             return redirect('/');
         }
@@ -53,7 +53,7 @@ class UserController extends DAO
         $repeatPassword = $_POST['repeat-password'];
 
         if (!empty($name) || !empty($email || !empty($password) || !empty($repeatPassword))) {
-            $user = \App\DB\UserDAO::getEmailUser($email)[0];
+            $user = \App\DB\UserDAO::getUserByEmail($email)[0];
 
             if (empty($user)) {
                 if ($password == $repeatPassword) {

@@ -37,6 +37,21 @@ class UserDAO extends DAO
         }
     }
 
+    public static function getUserByEmail(string $email) : array {
+        try {
+            $db = new DAO();
+            $stmt = $db->openDB();
+
+            $stmt = $stmt->prepare('SELECT * FROM USER WHERE emailUser =:emailUser; ');
+            $stmt->bindValue(':emailUser', $email, \PDO::PARAM_STR);
+            $stmt->execute();
+            $db->closeDB();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        } catch(\PDOException $pdo) {
+            var_dump('Erro no getEmailUser', $pdo->getMessage());
+        }
+    }
+
     public static function createUser(User $user) : void {
         try {
             $db = new DAO();
