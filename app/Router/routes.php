@@ -11,7 +11,8 @@ return [
         '/user/' => 'UserController@index',
         '\/user\/[a-z0-9]+\/?' => 'UserController@edit',
         '\/user\/delete\/[a-z0-9]+\/?' => 'UserController@deleteUser',
-        '\/user\/[0-9]+\/?' => 'UserController@show'
+        '\/user\/[0-9]+\/?' => 'UserController@show',
+        '/logout' => 'UserController@logoutUser'
     ]
 ];
 
