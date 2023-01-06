@@ -7,7 +7,7 @@ class HomeController
     public function index()
     {
         return [
-            'view' => 'pages/home/home.php',
+            'view' => 'pages/home/home',
             'data' => [
                 'title' => 'Home',
                 'form' => 'partials/form/sign-in.php'
@@ -18,7 +18,7 @@ class HomeController
     public function signUp()
     {  
         return [
-            'view' => 'pages/home/home.php',
+            'view' => 'pages/home/home',
             'data' => [
                 'title' => 'Home',
                 'form' => 'partials/form/sign-up.php'

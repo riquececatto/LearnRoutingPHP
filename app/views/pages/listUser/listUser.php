@@ -1,3 +1,5 @@
+<?php $this->layout('master', ['title' => $title]); ?>
+
 <div class="container">
     <div class="c-log">
         <div class="c-log__container">

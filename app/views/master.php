@@ -7,15 +7,17 @@
 
     <link rel="stylesheet" href="/assets/css/styles.css">
 
-    <title> <?php echo $title ?> </title>
+    <title><?php echo $this->e($title); ?></title>
+    <?=$this->section('styles');?>
 </head>
 <body>
+
     <header class="header">
-        <?php require_once VIEW . 'partials/header/header.php'; ?>
+        <?= $this->insert('partials/header/header'); ?>
     </header>
     <main class="main">
-        <?php require_once VIEW . $view;?>
-    </main>
+        <?= $this->section('content')?>
+</main>
 
 </body>
 </html>

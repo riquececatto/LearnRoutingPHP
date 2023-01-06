@@ -13,7 +13,7 @@ class UserController extends DAO
         $users = \App\DB\UserDAO::getAllUser();
 
         return [
-            'view' => 'pages/listUser/listUser.php',
+            'view' => 'pages/listUser/listUser',
             'data' => [
                 'title' => 'Users',
                 'users' => $users
@@ -74,7 +74,7 @@ class UserController extends DAO
         $user = \App\DB\UserDAO::getIdUser($id);
 
         return [
-            'view' => 'pages/home/home.php',
+            'view' => 'pages/home/home',
             'data' => [
                 'title' => 'Users',
                 'txtAction' => 'Create',

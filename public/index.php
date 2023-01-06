@@ -8,11 +8,12 @@ try {
 
     $routeData = Router::getRouter();
 
-    extract($routeData['data']);
+    $templates = new League\Plates\Engine(VIEW);
+    echo $templates->render($routeData['view'], $routeData['data']);
 
-    $view = $routeData['view'];
-
-    require_once VIEW . 'master.php';
+    // extract($routeData['data']);
+    // $view = $routeData['view'];
+    // require_once VIEW . 'master.php';
 
 } catch(\Exception $e) {
     var_dump($e->getMessage());
