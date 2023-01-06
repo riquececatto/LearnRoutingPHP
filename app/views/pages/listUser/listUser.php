@@ -1,4 +1,4 @@
-<?php $this->layout('master', ['title' => $title]); ?>
+<?php $this->layout('master', ['title' => $title, 'users' => $users]); ?>
 
 <div class="container">
     <div class="c-log">
