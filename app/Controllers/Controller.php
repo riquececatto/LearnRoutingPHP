@@ -2,23 +2,17 @@
 
 namespace App\Controllers;
 
-class Controller
+abstract class Controller
 {
-    public static function getController(array $matchedUri, $params) {
-        [$controller, $method] = explode('@', array_values($matchedUri)[0]);
+    private $templates;
 
-        $controllerWithNamespace = CONTROLLER_PATH . $controller;
+    public function __construct(\League\Plates\Engine $templates)
+    {
+        $this->templates = $templates(VIEW);
+    }
 
-        if(!class_exists($controllerWithNamespace)) {
-            throw new \Exception("Don't exists the {$controller} class");
-        }
-
-        $controllerInstance = new $controllerWithNamespace();
-
-        if(!method_exists($controllerInstance, $method)) {
-            throw new \Exception("Don't exists the {$method} method in the {$controller} class");
-        }
-
-        return $controllerInstance->$method($params);
+    public function getIndex(string $view, array $data)
+    {
+        echo $this->templates->render($view, $data);
     }
 }

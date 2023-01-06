@@ -9,7 +9,8 @@
         }
     ],
     "require": {
-        "endyjasmi/cuid": "2.*"
+        "endyjasmi/cuid": "2.*",
+        "league/plates": "^3.4"
     },
     "autoload": {
         "psr-4": {
