@@ -39,7 +39,8 @@ class UserController extends DAO
         return redirect('/user/');
     }
 
-    public function logoutUser() {
+    public function logoutUser()
+    {
         unset($_SESSION[LOGGED]);
 
         return redirect('/');
@@ -47,25 +48,35 @@ class UserController extends DAO
 
     public function createUser()
     {
+        if (empty($_POST['name'])) {
+            return setMessageAndRedirect('name', 'names is in blank', '/sign-up');
+        }
+        if (empty($_POST['email'])) {
+            return setMessageAndRedirect('email', 'email is in blank', '/sign-up');
+        }
+        if (empty($_POST['password'])) {
+            return setMessageAndRedirect('password', 'password is in blank', '/sign-up');
+        }
+        if (empty($_POST['repeatPassword'])) {
+            return setMessageAndRedirect('repeatPassword', 'repeat password is in blank', '/sign-up');
+        }
+
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $repeatPassword = $_POST['repeat-password'];
+        $repeatPassword = $_POST['repeatPassword'];
 
-        if (!empty($name) || !empty($email || !empty($password) || !empty($repeatPassword))) {
-            $user = \App\DB\UserDAO::getUserByEmail($email)[0];
-
-            if (empty($user)) {
-                if ($password == $repeatPassword) {
-                    $user = new User(cuid(), $name, $email, password_hash($password, PASSWORD_DEFAULT));
-                    \App\DB\UserDAO::createUser($user);
-                    return  redirect('/user/');
-                }
-                return setMessageAndRedirect('password', 'Senhas não batem', '/sign-up');
-            }
-            return setMessageAndRedirect('email', 'Email já cadastrado.', '/sign-up');
+        if(!$password === $repeatPassword) {
+            return setMessageAndRedirect('password', 'passwords do not match', '/sign-up');
         }
-        return setMessageAndRedirect('name', 'Campos Inválidos', '/sign-up');
+
+        if (isset((\App\DB\UserDAO::getUserByEmail($email))[0])) {
+            return setMessageAndRedirect('email', 'email is already being used.', '/sign-up');
+        }
+
+        $user = new User(cuid(), $name, $email, password_hash($password, PASSWORD_DEFAULT));
+        \App\DB\UserDAO::createUser($user);
+        return  redirect('/user/');
     }
 
     public function edit($params)

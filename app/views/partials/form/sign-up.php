@@ -19,7 +19,7 @@
                         <span class="c-form__text--error"><?php echo getFlash('password'); ?></span>
                     </div>
                     <div class="c-form__item">
-                        <input class="c-form__input-text" type="password" name="repeat-password" placeholder="Repeat Password: ">
+                        <input class="c-form__input-text" type="password" name="repeatPassword" placeholder="Repeat Password: ">
                         <span class="c-form__text--error"><?php echo getFlash('repeatPassword'); ?></span>
                     </div>
                 </div>
