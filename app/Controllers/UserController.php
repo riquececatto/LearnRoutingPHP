@@ -2,10 +2,9 @@
 
 namespace App\Controllers;
 
-use App\DB\DAO;
 use App\Models\User;
 
-class UserController extends DAO
+class UserController extends \App\DB\UserDAO
 {
 
     public function index($params)
@@ -46,7 +45,7 @@ class UserController extends DAO
         return redirect('/');
     }
 
-    public function createUser()
+    public function create()
     {
         if (empty($_POST['name'])) {
             return setMessageAndRedirect('name', 'names is in blank', '/sign-up');
@@ -94,7 +93,7 @@ class UserController extends DAO
         ];
     }
 
-    public function deleteUser($params)
+    public function delete($params)
     {
         $id = (string) array_values($params)[0];
 

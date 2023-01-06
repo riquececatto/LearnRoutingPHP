@@ -2,33 +2,41 @@
 
 namespace App\DB;
 
-class DAO
+abstract class DAO
 {
-    private array $dbo;
-
-    public function __construct()
+    private static ?array $dbo;
+    
+    private static function stringConnection() : void
     {
-        $this->dbo = [
+        self::$dbo = [
             'dbName' => 'example',
             'dbHost' => 'localhost:3306',
             'dbUser' => 'riquececatto',
             'dbPassword' => '159753'
         ];
     }
-
-    public function openDB() {
+    
+    protected static function openDB() : \PDO {
         try {
-            if(!is_null($this->dbo)) {
-                return new \PDO("mysql:dbname=".$this->dbo['dbName'].";host=".$this->dbo['dbHost'], $this->dbo['dbUser'], $this->dbo['dbPassword'], 
-                    [\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ]
-                );
+            if(!isset(self::$dbo)) {
+                self::stringConnection();
             }
+
+            $conn = new \PDO("mysql:dbname=".self::$dbo['dbName'].";host=".self::$dbo['dbHost'], self::$dbo['dbUser'], self::$dbo['dbPassword'], 
+                [\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ]
+            );
+
+            self::closeDB();
+            return $conn;
+
+
         } catch(\PDOException $pdo) {
             var_dump($pdo->getMessage());
+            var_dump($pdo->getLine());
         }
     }
 
-    public function closeDB(){
-        unset($this->dbo);
+    private static function closeDB() : void{
+        self::$dbo = NULL;
     }
 }
