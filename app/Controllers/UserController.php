@@ -131,8 +131,12 @@ class UserController extends \App\DB\UserDAO
     public function delete($params)
     {
         $id = (string) array_values($params)[0];
-
+        $user = \App\DB\UserDAO::getIdUser($id)[0];
         \App\DB\UserDAO::deleteUser($id);
-        return  redirect('/user/');
+        if(user()['emailUser'] == $user['emailUser']) {
+            unset($_SESSION[LOGGED]);
+            return  redirect('/');
+        }
+        return redirect('/user/');
     }
 }
