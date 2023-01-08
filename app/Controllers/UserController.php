@@ -65,8 +65,8 @@ class UserController extends \App\DB\UserDAO
         $password = $_POST['password'];
         $repeatPassword = $_POST['repeatPassword'];
 
-        if(!$password === $repeatPassword) {
-            return setMessageAndRedirect('password', 'passwords do not match', '/sign-up');
+        if($password !== $repeatPassword) {
+            return setMessageAndRedirect('password', 'passwords isnt match', '/sign-up');
         }
 
         if (isset((\App\DB\UserDAO::getUserByEmail($email))[0])) {
@@ -81,16 +81,50 @@ class UserController extends \App\DB\UserDAO
     public function edit($params)
     {
         $id = (string) array_values($params)[0];
-        $user = \App\DB\UserDAO::getIdUser($id);
+        $user = \App\DB\UserDAO::getIdUser($id)[0];
 
         return [
             'view' => 'pages/home/home',
             'data' => [
-                'title' => 'Users',
-                'txtAction' => 'Create',
-                'user' => $user[0]
+                'title' => 'Edit User',
+                'form' => 'partials/form/edit',
+                'user' => $user
             ]
         ];
+    }
+
+    public function update()
+    {
+        if (empty($_POST['name'])) {
+            return setMessageAndRedirect('name', 'names is in blank', '/user/'.user()['idUser']);
+        }
+        if (empty($_POST['oldPassword'])) {
+            return setMessageAndRedirect('oldPassword', 'oldPassword is in blank', '/user/'.user()['idUser']);
+        }
+        if (empty($_POST['password'])) {
+            return setMessageAndRedirect('password', 'password is in blank', '/user/'.user()['idUser']);
+        }
+        if (empty($_POST['repeatPassword'])) {
+            return setMessageAndRedirect('repeatPassword', 'repeat password is in blank', '/user/'.user()['idUser']);
+        }
+
+        $name = $_POST['name'];
+        $email = user()['emailUser'];
+        $oldPassword = $_POST['oldPassword'];
+        $password = $_POST['password'];
+        $repeatPassword = $_POST['repeatPassword'];
+        
+        if($password !== $repeatPassword) {
+            return setMessageAndRedirect('password', 'password isnt match', '/user/'.user()['idUser']);
+        }
+
+        if (! password_verify($oldPassword, user()['passwordUser'])) {
+            return setMessageAndRedirect('oldPassword', 'oldPassword error', '/user/'.user()['idUser']);
+        }
+
+        $user = new User(user()['idUser'], $name, $email, password_hash($password, PASSWORD_DEFAULT));
+        $user = \App\DB\UserDAO::updateUser($user);
+        return  redirect('/user/');
     }
 
     public function delete($params)

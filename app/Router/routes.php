@@ -3,7 +3,9 @@
 return [
     'POST' => [
         '/user/login/' => 'UserController@loginUser',
-        '/user/create/' => 'UserController@create'
+        '/user/create/' => 'UserController@create',
+        '\/user\/[a-z0-9]+\/?' => 'UserController@update'
+
     ],
     'GET' => [
         '/' => 'HomeController@index',
