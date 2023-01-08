@@ -6,6 +6,8 @@ try {
     session_start();
     require_once '../vendor/autoload.php';
 
+    session_regenerate_id(TRUE);
+
     $routeData = Router::getRouter();
 
     $templates = new League\Plates\Engine(VIEW);

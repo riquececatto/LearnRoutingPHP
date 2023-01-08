@@ -75,6 +75,7 @@ class UserController extends \App\DB\UserDAO
 
         $user = new User(cuid(), $name, $email, password_hash($password, PASSWORD_DEFAULT));
         \App\DB\UserDAO::createUser($user);
+        $_SESSION[LOGGED] = \App\DB\UserDAO::getUserByEmail($email)[0];
         return  redirect('/user/');
     }
 
