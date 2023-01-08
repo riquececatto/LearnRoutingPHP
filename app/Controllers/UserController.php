@@ -110,7 +110,9 @@ class UserController extends \App\DB\UserDAO
         }
 
         $user = new User(user()['idUser'], $name, $email, password_hash($password, PASSWORD_DEFAULT));
+        unset($_SESSION[LOGGED]);
         $user = \App\DB\UserDAO::updateUser($user);
+        $_SESSION[LOGGED] = \App\DB\UserDAO::getUserByEmail($email)[0];
         return  redirect('/user/');
     }
 
