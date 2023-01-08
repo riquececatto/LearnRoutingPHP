@@ -6,39 +6,43 @@ use App\Core\Controller;
 
 class Router
 {
+    /**
+     * Function where it takes the data if it receives a valid route
+     */
     public static function getRouter()
     {
+        /**
+         *  $uri -> Catch URI
+         *  $requestMethod -> Catch the Method (e.g: GET / POST / PUT / DELETE / ...) 
+         *  $routes -> Catch predefined routes in routes.php file
+         *  $params -> Where it stores the parameters received by the GET method
+         */
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $requestMethod = $_SERVER['REQUEST_METHOD'];
         $routes = require_once 'routes.php';
 
-        $matchedUri = self::exactMatchUri($uri, $routes[$requestMethod]);
-
         $params = [];
+
+        $matchedUri = self::regularExpressionMatchUri($uri, $routes[$requestMethod]);
+        
+        /**
+         * If it does not find the URI it will throw a new exception
+         */
         if (empty($matchedUri)) {
-            $matchedUri = self::regularExpressionMatchUri($uri, $routes[$requestMethod]);
-            
-            $uri = explode('/', ltrim($uri, '/'));
-            $params = self::getParams($uri, $matchedUri);
+            throw new \Exception('Route not found.');
         }
 
-        if (!empty($matchedUri)) {
-            return Controller::getController($matchedUri, $params);
-        }
+        $uri = explode('/', ltrim($uri, '/'));
+        $params = self::getParams($uri, $matchedUri);
 
-        throw new \Exception('Algo deu errado na rota.');
+        return Controller::getController($matchedUri, $params);
     }
 
-    // Exact URI
-    private static function exactMatchUri(string $uri, array $routes)
-    {
-        (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] : [];
-    }
-
-    //Regular Expression URI
+    /**
+     * Function where it will test the URI with each predefined route in routes.php file
+     */
     private static function regularExpressionMatchUri(string $uri, array $routes)
     {
-        //rgx = / ^\/user\/[0-9]+\/?$ /
         return array_filter(
             $routes,
             function ($value) use ($uri) {
@@ -48,6 +52,9 @@ class Router
         );
     }
 
+    /**
+     * Function where it will get the difference between the URI and the predefined route in routes.php file
+     */
     private static function getParams(array $uri, array $matchedUri)
     {
         $matchedParams = array_keys($matchedUri)[0];
