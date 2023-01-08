@@ -47,17 +47,10 @@ class UserController extends \App\DB\UserDAO
 
     public function create()
     {
-        if (empty($_POST['name'])) {
-            return setMessageAndRedirect('name', 'names is in blank', '/sign-up');
-        }
-        if (empty($_POST['email'])) {
-            return setMessageAndRedirect('email', 'email is in blank', '/sign-up');
-        }
-        if (empty($_POST['password'])) {
-            return setMessageAndRedirect('password', 'password is in blank', '/sign-up');
-        }
-        if (empty($_POST['repeatPassword'])) {
-            return setMessageAndRedirect('repeatPassword', 'repeat password is in blank', '/sign-up');
+        $validate = validateUser('create');
+
+        if($validate) {
+            return setMessageAndRedirect($validate, $validate . ' is in blank', '/sign-up');
         }
 
         $name = $_POST['name'];
@@ -96,17 +89,10 @@ class UserController extends \App\DB\UserDAO
 
     public function update()
     {
-        if (empty($_POST['name'])) {
-            return setMessageAndRedirect('name', 'names is in blank', '/user/'.user()['idUser']);
-        }
-        if (empty($_POST['oldPassword'])) {
-            return setMessageAndRedirect('oldPassword', 'oldPassword is in blank', '/user/'.user()['idUser']);
-        }
-        if (empty($_POST['password'])) {
-            return setMessageAndRedirect('password', 'password is in blank', '/user/'.user()['idUser']);
-        }
-        if (empty($_POST['repeatPassword'])) {
-            return setMessageAndRedirect('repeatPassword', 'repeat password is in blank', '/user/'.user()['idUser']);
+        $validate = validateUser('update');
+
+        if($validate) {
+            return setMessageAndRedirect($validate, $validate . ' is in blank', '/sign-up');
         }
 
         $name = $_POST['name'];
