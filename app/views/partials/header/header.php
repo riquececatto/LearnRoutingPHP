@@ -9,7 +9,9 @@
         </div>
         <nav class="c-navbar__menu flex">
             <li class="c-navbar__item"><a href="/" class="c-navbar__link">HOME</a></li>
-            <li class="c-navbar__item"><a href="/user/" class="c-navbar__link">LIST USERS</a></li>
+            <?php if(logged()) : ?>
+                <li class="c-navbar__item"><a href="/user/" class="c-navbar__link">LIST USERS</a></li>
+            <?php endif; ?>
         </nav>
         <div class="c-navbar__header" style="color:white">
             <h3> Bem vindo, 

@@ -1,3 +1,4 @@
+<?php if(!logged()) : ?>
 <div class="c-form">
     <div class="c-form__container">
         <div class="c-form__header">
@@ -25,3 +26,6 @@
         </form>
     </div>
 </div>
+<?php else: ?>
+    <?php return redirect('/user/'); ?>
+<?php endif; ?>
